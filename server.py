@@ -9,6 +9,9 @@ def server_emotion_detector():
 
     emotions = emotion_detector(text_to_analyze)
 
+    if emotions['dominant_emotion'] is None:
+        return 'Invalid text! Please try again!.'
+
     return f"""For the given statement, the system response is
     'anger': {emotions['anger']}, 
     'disgust': {emotions['disgust']}, 
