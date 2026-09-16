@@ -1,10 +1,14 @@
-from EmotionDetection.emotion_detection import emotion_detector
+'''Project to presente the final exam'''
 from flask import Flask, request, render_template
+from EmotionDetection.emotion_detection import emotion_detector
 
 app = Flask('Emotion Detector')
 
 @app.route('/emotionDetector')
 def server_emotion_detector():
+    '''
+        Function that calls the emotion detector to analyze a text
+    '''
     text_to_analyze = request.args.get('textToAnalyze')
 
     emotions = emotion_detector(text_to_analyze)
@@ -20,8 +24,12 @@ def server_emotion_detector():
     and 'sadness': {emotions['sadness']}. 
     The dominant emotion is {emotions['dominant_emotion']}.
     """
+
 @app.route('/')
 def main():
+    '''
+        Function that allows the server render the main page
+    '''
     return render_template('index.html')
 
 
